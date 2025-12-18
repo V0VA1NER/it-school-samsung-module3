@@ -10,10 +10,21 @@ public class MemoryManager {
 
     private static final Preferences preferences = Gdx.app.getPreferences("User saves");
 
+    public static void saveGodSettings(boolean isOn) {
+        preferences.putBoolean("isGodOn", isOn);
+        preferences.flush();
+    }
+
+
+    public static boolean loadIsGodOn() {
+        return preferences.getBoolean("isGodOn", true);
+    }
+
     public static void saveSoundSettings(boolean isOn) {
         preferences.putBoolean("isSoundOn", isOn);
         preferences.flush();
     }
+
 
     public static boolean loadIsSoundOn() {
         return preferences.getBoolean("isSoundOn", true);

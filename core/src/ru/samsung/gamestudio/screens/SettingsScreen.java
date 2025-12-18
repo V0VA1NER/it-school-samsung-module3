@@ -24,6 +24,7 @@ public class SettingsScreen extends ScreenAdapter {
     ImageView blackoutImageView;
     ButtonView returnButton;
     TextView musicSettingView;
+    TextView godModeView;
     TextView soundSettingView;
     TextView clearSettingView;
 
@@ -31,20 +32,26 @@ public class SettingsScreen extends ScreenAdapter {
         this.myGdxGame = myGdxGame;
 
         backgroundView = new MovingBackgroundView(GameResources.BACKGROUND_IMG_PATH);
-        titleTextView = new TextView(myGdxGame.largeWhiteFont, 256, 956, "Settings");
+        titleTextView = new TextView(myGdxGame.largeWhiteFont, 256, 956, "🤤Settings🤤");
         blackoutImageView = new ImageView(85, 365, GameResources.BLACKOUT_MIDDLE_IMG_PATH);
-        clearSettingView = new TextView(myGdxGame.commonWhiteFont, 173, 599, "clear records");
+        clearSettingView = new TextView(myGdxGame.commonWhiteFont, 173, 599, "🤤clear records🤤");
 
         musicSettingView = new TextView(
                 myGdxGame.commonWhiteFont,
                 173, 717,
-                "music: " + translateStateToText(MemoryManager.loadIsMusicOn())
+                "🤤music🤤: " + translateStateToText(MemoryManager.loadIsMusicOn())
+        );
+
+        godModeView = new TextView(
+                myGdxGame.commonWhiteFont,
+                9999, 9999,
+                "🤤Enable GodMode🤤" + translateStateToText(MemoryManager.loadIsGodOn())
         );
 
         soundSettingView = new TextView(
                 myGdxGame.commonWhiteFont,
                 173, 658,
-                "sound: " + translateStateToText(MemoryManager.loadIsSoundOn())
+                "🤤sound🤤: " + translateStateToText(MemoryManager.loadIsSoundOn())
         );
 
         returnButton = new ButtonView(
@@ -52,7 +59,7 @@ public class SettingsScreen extends ScreenAdapter {
                 160, 70,
                 myGdxGame.commonBlackFont,
                 GameResources.BUTTON_SHORT_BG_IMG_PATH,
-                "return"
+                "🤤return🤤"
         );
 
     }
@@ -75,6 +82,7 @@ public class SettingsScreen extends ScreenAdapter {
         musicSettingView.draw(myGdxGame.batch);
         soundSettingView.draw(myGdxGame.batch);
         clearSettingView.draw(myGdxGame.batch);
+        godModeView.draw(myGdxGame.batch);
 
         myGdxGame.batch.end();
     }
@@ -88,22 +96,26 @@ public class SettingsScreen extends ScreenAdapter {
             }
             if (clearSettingView.isHit(myGdxGame.touch.x, myGdxGame.touch.y)) {
                 MemoryManager.saveTableOfRecords(new ArrayList<>());
-                clearSettingView.setText("clear records (cleared)");
+                clearSettingView.setText("🤤clear records (cleared)🤤");
             }
             if (musicSettingView.isHit(myGdxGame.touch.x, myGdxGame.touch.y)) {
                 MemoryManager.saveMusicSettings(!MemoryManager.loadIsMusicOn());
-                musicSettingView.setText("music: " + translateStateToText(MemoryManager.loadIsMusicOn()));
+                musicSettingView.setText("🤤music: 🤤" + translateStateToText(MemoryManager.loadIsMusicOn()));
                 myGdxGame.audioManager.updateMusicFlag();
             }
             if (soundSettingView.isHit(myGdxGame.touch.x, myGdxGame.touch.y)) {
                 MemoryManager.saveSoundSettings(!MemoryManager.loadIsSoundOn());
-                soundSettingView.setText("sound: " + translateStateToText(MemoryManager.loadIsSoundOn()));
+                soundSettingView.setText("🤤sound: 🤤" + translateStateToText(MemoryManager.loadIsSoundOn()));
                 myGdxGame.audioManager.updateSoundFlag();
+            }
+            if (godModeView.isHit(myGdxGame.touch.x, myGdxGame.touch.y)) {
+                MemoryManager.saveGodSettings(!MemoryManager.loadIsGodOn());
+                soundSettingView.setText("🤤godmode: 🤤" + translateStateToText(MemoryManager.loadIsGodOn()));
             }
         }
     }
 
     private String translateStateToText(boolean state) {
-        return state ? "ON" : "OFF";
+        return state ? "🤤ON🤤" : "🤤OFF🤤";
     }
 }

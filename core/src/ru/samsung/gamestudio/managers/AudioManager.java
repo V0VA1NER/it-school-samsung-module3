@@ -9,6 +9,7 @@ public class AudioManager {
 
     public boolean isSoundOn;
     public boolean isMusicOn;
+    public boolean isGodOn;
 
     public Music backgroundMusic;
     public Sound shootSound;

@@ -139,7 +139,7 @@ public class GameScreen extends ScreenAdapter {
             updateBullets();
             backgroundView.move();
             gameSession.updateScore();
-            scoreTextView.setText("Score: " + gameSession.getScore());
+            scoreTextView.setText("🤤Score: 🤤" + gameSession.getScore());
             liveView.setLeftLives(shipObject.getLiveLeft());
 
             myGdxGame.stepWorld();
