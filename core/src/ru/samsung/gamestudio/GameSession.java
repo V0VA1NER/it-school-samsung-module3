@@ -11,7 +11,7 @@ public class GameSession {
     long nextTrashSpawnTime;
     long sessionStartTime;
     long pauseStartTime;
-    private int score;
+    public int score;
     int destructedTrashNumber;
 
     public GameSession() {

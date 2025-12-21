@@ -19,6 +19,7 @@ public class GameResources {
     public static final String BULLET_IMG_PATH = "textures/bullet_drool.png";
     public static final String SHIP_IMG_PATH = "textures/54038ec5-4199-4b7d-9a9b-000c04043853_removalai_preview.png";
     public static final String TRASH_IMG_PATH = "textures/enemy_drool.png";
+    public static final String BIG_TRASH_IMG_PATH = "textures/enemy_drool_boss.png";
 
     // Sounds and music for audio
 

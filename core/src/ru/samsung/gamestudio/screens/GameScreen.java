@@ -26,20 +26,17 @@ public class GameScreen extends ScreenAdapter {
 
     ContactManager contactManager;
 
-    // PLAY state UI
     MovingBackgroundView backgroundView;
     ImageView topBlackoutView;
     LiveView liveView;
     TextView scoreTextView;
     ButtonView pauseButton;
 
-    // PAUSED state UI
     ImageView fullBlackoutView;
     TextView pauseTextView;
     ButtonView homeButton;
     ButtonView continueButton;
 
-    // ENDED state UI
     TextView recordsTextView;
     RecordsListView recordsListView;
     ButtonView homeButton2;
@@ -111,11 +108,7 @@ public class GameScreen extends ScreenAdapter {
 
         if (gameSession.state == GameState.PLAYING) {
             if (gameSession.shouldSpawnTrash()) {
-                TrashObject trashObject = new TrashObject(
-                        GameSettings.TRASH_WIDTH, GameSettings.TRASH_HEIGHT,
-                        GameResources.TRASH_IMG_PATH,
-                        myGdxGame.world
-                );
+                TrashObject trashObject = TrashObject.createRandom(myGdxGame.world);
                 trashArray.add(trashObject);
             }
 
